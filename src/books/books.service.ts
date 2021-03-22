@@ -53,12 +53,12 @@ export class BooksService {
             }
             if (genreIDs){
                 let genres = []
-                genreIDs.forEach(async element => {
+                for (let element of genres){
                     let genre : GenreEntity = await GenreEntity.findOne({where : {id : element}})
                     if (genre){
                         genres.push(genre)
                     }
-                });
+                }
                 book.genres = genres
             }
             BookEntity.save(book)
