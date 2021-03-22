@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Header, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Header, HttpCode, Post, Query } from '@nestjs/common';
 import { ApiQuery, ApiResponse } from '@nestjs/swagger';
 import { PersonDto } from './dto/person.dto';
 import { HelloService } from './hello.service';
@@ -9,6 +9,7 @@ export class HelloController {
     constructor(private readonly helloService : HelloService){}
 
     @Post('welcome')
+    @HttpCode(200)
     @ApiResponse({status:200,description:"say Hello!!!"})
     @Header('Content-Type', 'application/json')
     async sayWelcome(@Body() personDto : PersonDto) : Promise<{data : String}> {
