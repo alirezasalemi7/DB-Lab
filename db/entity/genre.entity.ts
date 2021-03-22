@@ -3,10 +3,10 @@ import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from 't
 @Entity()
 export default class GenreEntity extends BaseEntity {
 
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column()
-  type: string;
+    @Column()
+    type: string;
 
 }

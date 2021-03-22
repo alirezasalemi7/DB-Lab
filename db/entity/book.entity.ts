@@ -6,17 +6,17 @@ import { type } from 'node:os';
 @Entity()
 export default class BookEntity extends BaseEntity 
 {
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column({ length: 500 })
-  name: string;
+    @Column({ length: 500 })
+    name: string;
 
-  @ManyToOne(type => UserEntity,user => user.books)
-  user : UserEntity;
+    @ManyToOne(type => UserEntity,user => user.books)
+    user : UserEntity;
 
-  @ManyToMany(type => GenreEntity)
-  @JoinTable()
-  genres : GenreEntity[];
+    @ManyToMany(type => GenreEntity)
+    @JoinTable()
+    genres : GenreEntity[];
 
 }

@@ -4,13 +4,13 @@ import BookEntity from './book.entity';
 @Entity()
 export default class UserEntity extends BaseEntity {
 
-  @PrimaryGeneratedColumn()
-  id: number;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @Column({ length: 500 })
-  name: string;
+    @Column({ length: 500 })
+    name: string;
 
-  @OneToMany(type => BookEntity,book => book.user)
-  books : BookEntity[];
+    @OneToMany(type => BookEntity,book => book.user)
+    books : BookEntity[];
 
 }
