@@ -6,9 +6,14 @@ import { HelloModule } from './hello/hello.module';
 import { BooksModule } from './books/books.module';
 import { UserModule } from './user/user.module';
 import { GenreModule } from './genre/genre.module';
+import { JobseekersModule } from './jobseekers/jobseekers.module';
 import UserEntity from 'db/entity/user.entity';
 import BookEntity from 'db/entity/book.entity';
 import GenreEntity from 'db/entity/genre.entity';
+import JobSeekersUserEntity from 'db/entity/jobseekersUsers.entity';
+import CVEntity from 'db/entity/cv.entity';
+import ProjectEntity from 'db/entity/project.entity';
+import RequestEntity from 'db/entity/request.entity';
 
 @Module({
   imports: [
@@ -16,8 +21,9 @@ import GenreEntity from 'db/entity/genre.entity';
     HelloModule, 
     UserModule,
     GenreModule,
-    TypeOrmModule.forFeature([UserEntity, BookEntity , GenreEntity]),
-    TypeOrmModule.forRoot()],
+    TypeOrmModule.forFeature([UserEntity, BookEntity , GenreEntity , JobSeekersUserEntity , CVEntity , ProjectEntity , RequestEntity]),
+    TypeOrmModule.forRoot(),
+    JobseekersModule],
   controllers: [AppController],
   providers: [AppService],
 })
