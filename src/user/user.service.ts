@@ -7,12 +7,19 @@ import UpdateUserDto from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
+
     async insert(userDetails: CreateUserDto): Promise<UserEntity> {
         const userEntity: UserEntity = UserEntity.create();
-        const {name } = userDetails;
+        const {name,password } = userDetails;
         userEntity.name = name;
+        userEntity.password = password
         await UserEntity.save(userEntity);
         return userEntity;
+    }
+
+    async getUser(id : number) : Promise<UserEntity> {
+        let user = await UserEntity.findOne({where : {id : id}})
+        return user
     }
     
     async getAllUsers(): Promise<UserEntity[]> {

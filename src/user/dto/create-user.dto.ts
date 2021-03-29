@@ -24,4 +24,11 @@ export default class CreateUserDto {
     })
     @IsArray()
     books: number[] ;
+
+    @ApiProperty({
+        name : "password",
+        description : "password of user",
+        required : true
+    })
+    password : number;
 }

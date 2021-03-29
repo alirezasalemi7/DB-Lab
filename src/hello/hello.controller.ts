@@ -1,9 +1,11 @@
-import { Body, Controller, Get, Header, HttpCode, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Header, HttpCode, Post, Query, UseGuards } from '@nestjs/common';
 import { ApiQuery, ApiResponse } from '@nestjs/swagger';
 import { PersonDto } from './dto/person.dto';
 import { HelloService } from './hello.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('hello')
+@UseGuards(AuthGuard('jwt'))
 export class HelloController {
 
     constructor(private readonly helloService : HelloService){}

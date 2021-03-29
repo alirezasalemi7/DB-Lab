@@ -1,11 +1,13 @@
-import { Body, Controller, Delete, Get, HttpCode, Post, Put, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Post, Put, Res, UseGuards } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import CreateGenreDto from './dto/create-genre.dto';
 import RemoveGenreDto from './dto/reomve-genre.dto';
 import UpdateGenreDto from './dto/update-genre.dto';
 import { GenreService } from './genre.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('genre')
+@UseGuards(AuthGuard('jwt'))
 export class GenreController {
     
     constructor(private readonly genreServices: GenreService) {}

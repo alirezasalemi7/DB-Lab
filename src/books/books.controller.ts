@@ -1,11 +1,13 @@
-import { Body, Controller, Delete, Get, HttpCode, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import CreateBookDto from './dto/create-book.dto';
 import RemoveBookDto from './dto/remove-book.dto';
 import UpdateBookDto from './dto/update-book.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('books')
+@UseGuards(AuthGuard('jwt'))
 export class BooksController {
 
     constructor(private readonly bookService : BooksService) {}

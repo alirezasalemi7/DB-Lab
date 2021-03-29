@@ -7,6 +7,9 @@ export default class UserEntity extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column({nullable : false})
+    password : number;
+
     @Column({ length: 500 })
     name: string;
 

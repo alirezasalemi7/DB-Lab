@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, HttpCode, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, ParseIntPipe, Post, Put, UseGuards } from '@nestjs/common';
 import { ApiBody, ApiResponse } from '@nestjs/swagger';
 import CreateUserDto from './dto/create-user.dto';
 import RemoveUserDto from './dto/remove-user.dto';
 import UpdateUserDto from './dto/update-user.dto';
 import { UserService } from './user.service';
+import { AuthGuard } from '@nestjs/passport';
+
 
 @Controller('users')
 export class UserController {
@@ -30,6 +32,7 @@ export class UserController {
         }
     )
     @Get()
+    @UseGuards(AuthGuard('jwt'))
     getAll() {
         return this.usersServices.getAllUsers();
     }
@@ -43,6 +46,7 @@ export class UserController {
         }
     )
     @Get('books')
+    @UseGuards(AuthGuard('jwt'))
     getBooks( @Body('userID', ParseIntPipe) userID: number ) {
         return this.usersServices.getBooksOfUser(userID);
     }
@@ -54,6 +58,7 @@ export class UserController {
         }
     )
     @Put()
+    @UseGuards(AuthGuard('jwt'))
     updateUser(@Body() user : UpdateUserDto) {
         return this.usersServices.updateUser(user)
     }
@@ -65,6 +70,7 @@ export class UserController {
         }
     )
     @Delete()
+    @UseGuards(AuthGuard('jwt'))
     deleteUser(@Body() user : RemoveUserDto) {
         return this.usersServices.removeUser(user)
     }

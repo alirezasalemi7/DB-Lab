@@ -7,6 +7,7 @@ import { BooksModule } from './books/books.module';
 import { UserModule } from './user/user.module';
 import { GenreModule } from './genre/genre.module';
 import { JobseekersModule } from './jobseekers/jobseekers.module';
+import { AuthModule } from './auth/auth.module';
 import UserEntity from 'db/entity/user.entity';
 import BookEntity from 'db/entity/book.entity';
 import GenreEntity from 'db/entity/genre.entity';
@@ -23,7 +24,8 @@ import RequestEntity from 'db/entity/request.entity';
     GenreModule,
     TypeOrmModule.forFeature([UserEntity, BookEntity , GenreEntity , JobSeekersUserEntity , CVEntity , ProjectEntity , RequestEntity]),
     TypeOrmModule.forRoot(),
-    JobseekersModule],
+    JobseekersModule,
+    AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
